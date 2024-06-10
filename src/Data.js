@@ -915,6 +915,7 @@ let products = [
     rating: 2.96,
     stock: 9,
     tags: ["fruits"],
+    brand: "Generic",
     sku: "QTROUV79",
     weight: 8,
     dimensions: {
@@ -971,6 +972,7 @@ let products = [
     rating: 2.83,
     stock: 96,
     tags: ["meat"],
+    brand: "Generic",
     sku: "BWWA2MSO",
     weight: 9,
     dimensions: {
@@ -1029,6 +1031,7 @@ let products = [
     rating: 2.88,
     stock: 13,
     tags: ["pet supplies", "cat food"],
+    brand: "Generic",
     sku: "C3F8QN6O",
     weight: 9,
     dimensions: {
@@ -1087,6 +1090,7 @@ let products = [
     rating: 4.61,
     stock: 69,
     tags: ["meat"],
+    brand: "Generic",
     sku: "G5YEHW7B",
     weight: 7,
     dimensions: {
@@ -1146,6 +1150,7 @@ let products = [
     rating: 4.01,
     stock: 22,
     tags: ["cooking essentials"],
+    brand: "Generic",
     sku: "Q6ZP1UY8",
     weight: 8,
     dimensions: {
@@ -1204,6 +1209,7 @@ let products = [
     rating: 4.71,
     stock: 22,
     tags: ["vegetables"],
+    brand: "Generic",
     sku: "6KGF2K6Z",
     weight: 9,
     dimensions: {
@@ -1262,6 +1268,7 @@ let products = [
     rating: 2.74,
     stock: 40,
     tags: ["pet supplies", "dog food"],
+    brand: "Generic",
     sku: "A6QRCH37",
     weight: 2,
     dimensions: {
@@ -1320,6 +1327,7 @@ let products = [
     rating: 4.46,
     stock: 10,
     tags: ["dairy"],
+    brand: "Generic",
     sku: "YA617RI7",
     weight: 4,
     dimensions: {
@@ -1376,6 +1384,7 @@ let products = [
     rating: 4.83,
     stock: 99,
     tags: ["seafood"],
+    brand: "Generic",
     sku: "XNIH1MTA",
     weight: 8,
     dimensions: {
@@ -1434,6 +1443,7 @@ let products = [
     rating: 4.28,
     stock: 89,
     tags: ["vegetables"],
+    brand: "Generic",
     sku: "HU7S7VQ0",
     weight: 7,
     dimensions: {
@@ -1492,6 +1502,7 @@ let products = [
     rating: 4.43,
     stock: 8,
     tags: ["vegetables"],
+    brand: "Generic",
     sku: "Y4RM3JCB",
     weight: 2,
     dimensions: {
@@ -1550,6 +1561,7 @@ let products = [
     rating: 3.5,
     stock: 25,
     tags: ["condiments"],
+    brand: "Generic",
     sku: "BTBNIIOU",
     weight: 9,
     dimensions: {
@@ -1608,6 +1620,7 @@ let products = [
     rating: 3.77,
     stock: 76,
     tags: ["desserts"],
+    brand: "Generic",
     sku: "VEZMU1EQ",
     weight: 5,
     dimensions: {
@@ -1669,6 +1682,7 @@ let products = [
     rating: 3.41,
     stock: 99,
     tags: ["beverages"],
+    brand: "Generic",
     sku: "M2K19S06",
     weight: 2,
     dimensions: {
@@ -1725,6 +1739,7 @@ let products = [
     rating: 4.37,
     stock: 1,
     tags: ["fruits"],
+    brand: "Generic",
     sku: "0X3NORB9",
     weight: 8,
     dimensions: {
