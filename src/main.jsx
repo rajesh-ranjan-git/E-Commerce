@@ -7,6 +7,7 @@ import Home from "./Home.jsx";
 import Cart from "./Cart.jsx";
 import Profile from "./Profile.jsx";
 import Error from "./Error.jsx";
+import SingleProductPage from "./SingleProductPage.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/products/:id",
+        element: <SingleProductPage />,
       },
     ],
     errorElement: <Error />,

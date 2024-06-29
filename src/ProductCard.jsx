@@ -1,6 +1,20 @@
+import { useNavigate } from "react-router";
+
 const ProductCard = ({ item }) => {
-  const { thumbnail, title, brand, category, price, rating, description } =
+  const { id, thumbnail, title, brand, category, price, rating, description } =
     item;
+
+  const Navigate = useNavigate();
+
+  const handleProductRouting = () => {
+    Navigate(`/products/${id}`);
+  };
+
+  const handleBuyNow = (event) => {
+    console.log("Buy Now clicked.");
+    event.stopPropagation();
+  };
+
   const checkBrand = () => {
     if (brand != undefined) {
       return (
@@ -11,7 +25,10 @@ const ProductCard = ({ item }) => {
     }
   };
   return (
-    <div className="card card-compact h-[30rem] w-96 bg-base-100 shadow-xl my-2">
+    <div
+      className="card card-compact h-[30rem] w-96 bg-base-100 shadow-xl my-2  cursor-pointer"
+      onClick={handleProductRouting}
+    >
       <figure>
         <img src={thumbnail} alt="Shoes" />
       </figure>
@@ -31,7 +48,9 @@ const ProductCard = ({ item }) => {
           <p className="font-bold">Rating : {rating}</p>
           {/* <p>{description}</p> */}
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary" onClick={handleBuyNow}>
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
