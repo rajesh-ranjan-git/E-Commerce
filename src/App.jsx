@@ -1,11 +1,11 @@
 import Navbar from "./Navbar";
-import Home from "./Home";
+import { Outlet } from "react-router";
 
 const App = () => {
   return (
     <>
       <Navbar />
-      <Home />
+      <Outlet />
     </>
   );
 };
