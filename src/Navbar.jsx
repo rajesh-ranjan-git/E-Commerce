@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ThemeStore } from "./utils/ThemeController";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeStore);
   const [activeThemeButton, setActiveThemeButton] = useState(false);
+
+  const cartItems = useSelector((store) => store.cart.items);
 
   useEffect(() => {
     setActiveThemeButton(
@@ -23,9 +26,14 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 text-xl">
           <li>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">
+              Cart{" "}
+              <sup className="text-red-600 text-xl font-bold">
+                {cartItems.length}
+              </sup>
+            </Link>
           </li>
           <li>
             <Link to="/profile">Profile</Link>

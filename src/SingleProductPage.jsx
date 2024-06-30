@@ -93,7 +93,7 @@ const SingleProductPage = () => {
             </button>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary">Add To Cart</button>
           </div>
         </div>
       </div>

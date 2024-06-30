@@ -6,7 +6,7 @@ import App from "./App.jsx";
 import Home from "./Home.jsx";
 import ShimmerUI from "./ShimmerUI.jsx";
 import { Provider } from "react-redux";
-import appStore from "./utils/store/AppStore.js";
+import appStore from "./utils/Store/AppStore.js";
 // import Cart from "./Cart.jsx";
 // import Profile from "./Profile.jsx";
 // import Error from "./Error.jsx";

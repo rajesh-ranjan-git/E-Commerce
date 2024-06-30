@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router";
 import { ThemeStore } from "./utils/ThemeController";
+import { useDispatch } from "react-redux";
+import { addCart } from "./utils/Store/CartSlice";
 
 const ProductCard = ({ item }) => {
   const { id, thumbnail, title, brand, category, price, rating, description } =
     item;
 
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { theme } = useContext(ThemeStore);
 
@@ -19,8 +22,8 @@ const ProductCard = ({ item }) => {
     Navigate(`/products/${id}`);
   };
 
-  const handleBuyNow = (event) => {
-    console.log("Buy Now clicked.");
+  const handleAddToCart = (event) => {
+    dispatch(addCart());
     event.stopPropagation();
   };
 
@@ -57,8 +60,8 @@ const ProductCard = ({ item }) => {
           <p className="font-bold">Rating : {rating}</p>
           {/* <p>{description}</p> */}
           <div className="card-actions justify-end">
-            <button className="btn btn-primary" onClick={handleBuyNow}>
-              Buy Now
+            <button className="btn btn-primary" onClick={handleAddToCart}>
+              Add To Cart
             </button>
           </div>
         </div>
