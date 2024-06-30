@@ -31,6 +31,11 @@ const Navbar = () => {
             <Link to="/profile">Profile</Link>
           </li>
           <li>
+            <Link to="/food" className="text-red-600">
+              FoodApp
+            </Link>
+          </li>
+          <li>
             <label className="flex cursor-pointer gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

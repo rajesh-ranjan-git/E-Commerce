@@ -1,13 +1,20 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Home from "./Home.jsx";
-import Cart from "./Cart.jsx";
-import Profile from "./Profile.jsx";
-import Error from "./Error.jsx";
-import SingleProductPage from "./SingleProductPage.jsx";
+import ShimmerUI from "./ShimmerUI.jsx";
+// import Cart from "./Cart.jsx";
+// import Profile from "./Profile.jsx";
+// import Error from "./Error.jsx";
+// import SingleProductPage from "./SingleProductPage.jsx";
+// import FoodApp from "./FoodApp.jsx";
+const Cart = lazy(() => import("./Cart.jsx"));
+const Profile = lazy(() => import("./Profile.jsx"));
+const Error = lazy(() => import("./Error.jsx"));
+const SingleProductPage = lazy(() => import("./SingleProductPage.jsx"));
+const FoodApp = lazy(() => import("./FoodApp.jsx"));
 
 const appRouter = createBrowserRouter([
   {
@@ -20,15 +27,35 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <Suspense fallback={<ShimmerUI />}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <Suspense fallback={<ShimmerUI />}>
+            <Profile />
+          </Suspense>
+        ),
       },
       {
         path: "/products/:id",
-        element: <SingleProductPage />,
+        element: (
+          <Suspense fallback={<ShimmerUI />}>
+            <SingleProductPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/food",
+        element: (
+          <Suspense fallback={<ShimmerUI />}>
+            <FoodApp />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <Error />,
