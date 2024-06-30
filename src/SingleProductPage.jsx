@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import SingleProductShimmer from "./SingleProductShimmer";
 import { ThemeStore } from "./utils/ThemeController";
+import ReviewComponent from "./ReviewComponent";
 
 const SingleProductPage = () => {
   const [obj, setObj] = useState({
@@ -13,7 +14,11 @@ const SingleProductPage = () => {
     rating: "Here goes rating of the product...",
     stock: "Here goes stock of the product...",
     category: "Here goes category of the product...",
+    reviews: [],
   });
+
+  const [showIdx, setShowIdx] = useState(null);
+
   const { id } = useParams();
 
   const { theme } = useContext(ThemeStore);
@@ -35,7 +40,8 @@ const SingleProductPage = () => {
   //     return <SingleProductShimmer />;
   //   }
 
-  const { thumbnail, title, brand, category, price, rating, stock } = obj;
+  const { thumbnail, title, brand, category, price, rating, stock, reviews } =
+    obj;
 
   return (
     <div className={theme === "light" ? lightTheme : darkTheme}>
@@ -90,6 +96,21 @@ const SingleProductPage = () => {
             <button className="btn btn-primary">Buy Now</button>
           </div>
         </div>
+      </div>
+
+      {/* Accordion */}
+      <div className="box w-2/4 bg-gray-300 mx-auto mt-5 pt-5 pb-5 rounded-3xl">
+        {reviews.map((obj, idx) => {
+          return (
+            <ReviewComponent
+              obj={obj}
+              idx={idx}
+              showIdx={showIdx}
+              setShowIdx={setShowIdx}
+              key={idx}
+            />
+          );
+        })}
       </div>
     </div>
   );
