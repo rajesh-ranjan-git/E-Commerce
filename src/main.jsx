@@ -5,6 +5,8 @@ import "./index.css";
 import App from "./App.jsx";
 import Home from "./Home.jsx";
 import ShimmerUI from "./ShimmerUI.jsx";
+import { Provider } from "react-redux";
+import appStore from "./utils/store/AppStore.js";
 // import Cart from "./Cart.jsx";
 // import Profile from "./Profile.jsx";
 // import Error from "./Error.jsx";
@@ -64,6 +66,8 @@ const appRouter = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={appRouter} />
+    <Provider store={appStore}>
+      <RouterProvider router={appRouter} />
+    </Provider>
   </React.StrictMode>
 );
