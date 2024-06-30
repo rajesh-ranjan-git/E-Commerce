@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import SingleProductShimmer from "./SingleProductShimmer";
+import { ThemeStore } from "./utils/ThemeController";
 
 const SingleProductPage = () => {
   const [obj, setObj] = useState({
@@ -14,6 +15,11 @@ const SingleProductPage = () => {
     category: "Here goes category of the product...",
   });
   const { id } = useParams();
+
+  const { theme } = useContext(ThemeStore);
+
+  const darkTheme = "bg-base-200 w-screen h-[92vh]";
+  const lightTheme = "bg-white w-screen h-[92vh]";
 
   const getData = async () => {
     const data = await fetch(`https://dummyjson.com/products/${id}`);
@@ -32,7 +38,7 @@ const SingleProductPage = () => {
   const { thumbnail, title, brand, category, price, rating, stock } = obj;
 
   return (
-    <div className="bg-base-200 w-screen h-[92vh]">
+    <div className={theme === "light" ? lightTheme : darkTheme}>
       <div className="card card-side shadow-xl w-1/2 mx-auto pt-6">
         <figure>
           <img src={thumbnail} alt="Product" />

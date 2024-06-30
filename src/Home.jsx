@@ -1,11 +1,16 @@
 import ProductCard from "./ProductCard";
 import ShimmerUI from "./ShimmerUI";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { ThemeStore } from "./utils/ThemeController";
 
 const Home = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [query, setQuery] = useState("");
+  const { theme } = useContext(ThemeStore);
+
+  const darkTheme = "min-h-[92vh] p-2 bg-slate-400";
+  const lightTheme = "min-h-[92vh] p-2 bg-white";
 
   const getData = async () => {
     const data = await fetch("https://dummyjson.com/products");
@@ -46,7 +51,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-[92vh] p-2 bg-slate-400">
+    <div className={theme === "light" ? lightTheme : darkTheme}>
       <div className="utility flex justify-between">
         <button className="btn" onClick={handleTopRated}>
           Top Rated

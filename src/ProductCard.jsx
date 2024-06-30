@@ -1,10 +1,19 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router";
+import { ThemeStore } from "./utils/ThemeController";
 
 const ProductCard = ({ item }) => {
   const { id, thumbnail, title, brand, category, price, rating, description } =
     item;
 
   const Navigate = useNavigate();
+
+  const { theme } = useContext(ThemeStore);
+
+  const darkTheme =
+    "card card-compact h-[30rem] w-96 bg-base-100 shadow-xl my-2  cursor-pointer";
+  const lightTheme =
+    "card card-compact h-[30rem] w-96 bg-gray-300 shadow-xl my-2  cursor-pointer text-black";
 
   const handleProductRouting = () => {
     Navigate(`/products/${id}`);
@@ -26,7 +35,7 @@ const ProductCard = ({ item }) => {
   };
   return (
     <div
-      className="card card-compact h-[30rem] w-96 bg-base-100 shadow-xl my-2  cursor-pointer"
+      className={theme === "light" ? lightTheme : darkTheme}
       onClick={handleProductRouting}
     >
       <figure>
