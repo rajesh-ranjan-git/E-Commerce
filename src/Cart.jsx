@@ -4,16 +4,15 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto px-5">
       <table className="table">
         {/* head */}
         <thead>
           <tr>
             <th>Name</th>
             <th>Rating</th>
-            <th>Price Color</th>
+            <th>Price</th>
             <th>Quantity</th>
             <th></th>
           </tr>
@@ -21,7 +20,7 @@ const Cart = () => {
         <tbody>
           {/* row 1 */}
           {cartItems.map((cartObj) => (
-            <CartRow cartObj={cartObj}></CartRow>
+            <CartRow key={cartObj.objData.id} cartObj={cartObj}></CartRow>
           ))}
         </tbody>
       </table>

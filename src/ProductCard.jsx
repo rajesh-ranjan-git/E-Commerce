@@ -23,7 +23,7 @@ const ProductCard = ({ item }) => {
   };
 
   const handleAddToCart = (event) => {
-    dispatch(addCart());
+    dispatch(addCart(item));
     event.stopPropagation();
   };
 

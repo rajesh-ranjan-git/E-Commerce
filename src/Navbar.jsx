@@ -8,6 +8,7 @@ const Navbar = () => {
   const [activeThemeButton, setActiveThemeButton] = useState(false);
 
   const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
 
   useEffect(() => {
     setActiveThemeButton(
