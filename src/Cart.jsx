@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
+
   return (
     <div className="overflow-x-auto px-5">
       <table className="table">

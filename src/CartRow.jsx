@@ -1,8 +1,12 @@
 import React from "react";
+import { removeCart } from "./utils/Store/CartSlice";
+import { useDispatch } from "react-redux";
 
 const CartRow = ({ cartObj }) => {
   const { objData, quantity } = cartObj;
-  const { thumbnail, title, rating, price } = objData;
+  const { id, thumbnail, title, rating, price } = objData;
+  const dispatch = useDispatch();
+
   return (
     <tr className="text-xl">
       <td>
@@ -21,7 +25,12 @@ const CartRow = ({ cartObj }) => {
       <td>$ {price}</td>
       <td>{quantity}</td>
       <th>
-        <button className="btn btn-outline btn-error">Remove Item</button>
+        <button
+          className="btn btn-outline btn-error"
+          onClick={() => dispatch(removeCart(id))}
+        >
+          Remove Item
+        </button>
       </th>
     </tr>
   );
