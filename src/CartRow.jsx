@@ -23,7 +23,7 @@ const CartRow = ({ cartObj }) => {
       <th>
         <button className="btn btn-outline btn-error">Remove Item</button>
       </th>
-    </tr>ss
+    </tr>
   );
 };
 
