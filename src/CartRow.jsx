@@ -23,7 +23,11 @@ const CartRow = ({ cartObj }) => {
       </td>
       <td className="text-center">{rating}</td>
       <td className="text-center">$ {price}</td>
-      <td className="text-center">{quantity}</td>
+      <td className="text-center">
+        <span>🔽</span>
+        <span className="px-2 text-2xl">{quantity}</span>
+        <span>🔼</span>
+      </td>
       <th className="text-center">
         <button
           className="btn btn-outline btn-error"

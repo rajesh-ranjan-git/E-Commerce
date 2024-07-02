@@ -28,6 +28,23 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.items.length = 0;
     },
+    incrementQuantity: (state, action) => {
+      const objId = action.payload;
+      const obj = state.items.find((cartObj) => cartObj.objData.id === objId);
+      obj.quantity += 1;
+    },
+    decrementQuantity: (state, action) => {
+      const objId = action.payload;
+      const obj = state.items.find((cartObj) => cartObj.objData.id === objId);
+      if (obj.quantity === 1) {
+        const ObjIdx = state.items.findIndex(
+          (cartObj) => cartObj.objData.id === id
+        );
+        state.items.splice(objId, 1);
+      } else {
+        obj.quantity -= 1;
+      }
+    },
   },
 });
 

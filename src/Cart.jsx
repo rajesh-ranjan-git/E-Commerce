@@ -14,8 +14,16 @@ const Cart = () => {
         <thead className="text-xl">
           <tr>
             <th>Name</th>
-            <th className="text-center">Rating</th>
-            <th className="text-center">Price</th>
+            <th className="text-center">
+              <span>🔽</span>
+              <span className="px-2 text-2xl">Rating</span>
+              <span>🔼</span>
+            </th>
+            <th className="text-center">
+              <span>🔽</span>
+              <span className="px-2 text-2xl">Price</span>
+              <span>🔼</span>
+            </th>
             <th className="text-center">Quantity</th>
             <th className="text-center">
               <button
