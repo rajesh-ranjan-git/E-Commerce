@@ -21,10 +21,10 @@ const CartRow = ({ cartObj }) => {
           </div>
         </div>
       </td>
-      <td>{rating}</td>
-      <td>$ {price}</td>
-      <td>{quantity}</td>
-      <th>
+      <td className="text-center">{rating}</td>
+      <td className="text-center">$ {price}</td>
+      <td className="text-center">{quantity}</td>
+      <th className="text-center">
         <button
           className="btn btn-outline btn-error"
           onClick={() => dispatch(removeCart(id))}

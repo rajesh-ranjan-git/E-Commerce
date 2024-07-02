@@ -1,21 +1,30 @@
 import React from "react";
 import CartRow from "./CartRow";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "./utils/Store/CartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
+  const dispatch = useDispatch();
 
   return (
     <div className="overflow-x-auto px-5">
       <table className="table">
         {/* head */}
-        <thead>
+        <thead className="text-xl">
           <tr>
             <th>Name</th>
-            <th>Rating</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th></th>
+            <th className="text-center">Rating</th>
+            <th className="text-center">Price</th>
+            <th className="text-center">Quantity</th>
+            <th className="text-center">
+              <button
+                className="btn btn-outline btn-warning text-xl"
+                onClick={() => dispatch(clearCart())}
+              >
+                Clear Cart
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody>
