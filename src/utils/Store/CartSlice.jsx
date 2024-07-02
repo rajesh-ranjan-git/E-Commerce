@@ -34,10 +34,10 @@ const cartSlice = createSlice({
       obj.quantity += 1;
     },
     decrementQuantity: (state, action) => {
-      const objId = action.payload;
-      const obj = state.items.find((cartObj) => cartObj.objData.id === objId);
+      const id = action.payload;
+      const obj = state.items.find((cartObj) => cartObj.objData.id === id);
       if (obj.quantity === 1) {
-        const ObjIdx = state.items.findIndex(
+        const objId = state.items.findIndex(
           (cartObj) => cartObj.objData.id === id
         );
         state.items.splice(objId, 1);
@@ -45,8 +45,30 @@ const cartSlice = createSlice({
         obj.quantity -= 1;
       }
     },
+    sortAscendingPrice: (state) => {
+      state.items.sort((a, b) => a.objData.price - b.objData.price);
+    },
+    sortDescendingPrice: (state) => {
+      state.items.sort((a, b) => b.objData.price - a.objData.price);
+    },
+    sortAscendingRating: (state) => {
+      state.items.sort((a, b) => a.objData.rating - b.objData.rating);
+    },
+    sortDescendingRating: (state) => {
+      state.items.sort((a, b) => b.objData.rating - a.objData.rating);
+    },
   },
 });
 
-export const { addCart, removeCart, clearCart } = cartSlice.actions;
+export const {
+  addCart,
+  removeCart,
+  clearCart,
+  incrementQuantity,
+  decrementQuantity,
+  sortAscendingPrice,
+  sortDescendingPrice,
+  sortAscendingRating,
+  sortDescendingRating,
+} = cartSlice.actions;
 export default cartSlice.reducer;

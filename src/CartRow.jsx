@@ -1,5 +1,9 @@
 import React from "react";
-import { removeCart } from "./utils/Store/CartSlice";
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeCart,
+} from "./utils/Store/CartSlice";
 import { useDispatch } from "react-redux";
 
 const CartRow = ({ cartObj }) => {
@@ -24,9 +28,19 @@ const CartRow = ({ cartObj }) => {
       <td className="text-center">{rating}</td>
       <td className="text-center">$ {price}</td>
       <td className="text-center">
-        <span>🔽</span>
+        <span
+          className="cursor-pointer"
+          onClick={() => dispatch(decrementQuantity(id))}
+        >
+          🔽
+        </span>
         <span className="px-2 text-2xl">{quantity}</span>
-        <span>🔼</span>
+        <span
+          className="cursor-pointer"
+          onClick={() => dispatch(incrementQuantity(id))}
+        >
+          🔼
+        </span>
       </td>
       <th className="text-center">
         <button

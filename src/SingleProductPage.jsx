@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import SingleProductShimmer from "./SingleProductShimmer";
 import { ThemeStore } from "./utils/ThemeController";
 import ReviewComponent from "./ReviewComponent";
+import { useDispatch } from "react-redux";
+import { addCart } from "./utils/Store/CartSlice";
 
 const SingleProductPage = () => {
   const [obj, setObj] = useState({
@@ -42,6 +44,12 @@ const SingleProductPage = () => {
 
   const { thumbnail, title, brand, category, price, rating, stock, reviews } =
     obj;
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (event) => {
+    dispatch(addCart(obj));
+  };
 
   return (
     <div className={theme === "light" ? lightTheme : darkTheme}>
@@ -93,7 +101,9 @@ const SingleProductPage = () => {
             </button>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Add To Cart</button>
+            <button className="btn btn-primary" onClick={handleAddToCart}>
+              Add To Cart
+            </button>
           </div>
         </div>
       </div>

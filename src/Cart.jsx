@@ -1,7 +1,13 @@
 import React from "react";
 import CartRow from "./CartRow";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "./utils/Store/CartSlice";
+import {
+  clearCart,
+  sortAscendingPrice,
+  sortDescendingPrice,
+  sortAscendingRating,
+  sortDescendingRating,
+} from "./utils/Store/CartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -15,14 +21,34 @@ const Cart = () => {
           <tr>
             <th>Name</th>
             <th className="text-center">
-              <span>🔽</span>
+              <span
+                className="cursor-pointer"
+                onClick={() => dispatch(sortAscendingRating())}
+              >
+                🔼
+              </span>
               <span className="px-2 text-2xl">Rating</span>
-              <span>🔼</span>
+              <span
+                className="cursor-pointer"
+                onClick={() => dispatch(sortDescendingRating())}
+              >
+                🔽
+              </span>
             </th>
             <th className="text-center">
-              <span>🔽</span>
+              <span
+                className="cursor-pointer"
+                onClick={() => dispatch(sortAscendingPrice())}
+              >
+                🔼
+              </span>
               <span className="px-2 text-2xl">Price</span>
-              <span>🔼</span>
+              <span
+                className="cursor-pointer"
+                onClick={() => dispatch(sortDescendingPrice())}
+              >
+                🔽
+              </span>
             </th>
             <th className="text-center">Quantity</th>
             <th className="text-center">
