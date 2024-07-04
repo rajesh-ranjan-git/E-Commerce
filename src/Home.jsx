@@ -78,6 +78,11 @@ const Home = () => {
             onChange={(event) => {
               setQuery(event.target.value);
             }}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                handleSearch();
+              }
+            }}
           />
           <button className="btn btn-secondary" onClick={handleSearch}>
             Search
