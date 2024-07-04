@@ -1,8 +1,21 @@
-# React + Vite
+# GetKart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an e-commerce website created with React + Vite.
 
-Currently, two official plugins are available:
+This website implements almost all the concepts of React and other frameworks :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> JSX
+> TailWind CSS
+> Hooks (useState, useEffect, useContext, useNavigate, useParam)
+> Shimmer UI
+> Multiple functionalities like Search Bar, Filtering Cards, Searching, Sorting
+> Context API
+> Dynamic Routing using React Routing
+> Link tags
+> Custom Hooks
+> Lazy Loading
+> Higher Order Components
+> Controlled and Uncontrolled components (Accordian)
+> State Lifting
+> Redux
+> Backend is yet to be implemented
