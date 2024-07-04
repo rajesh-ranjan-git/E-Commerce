@@ -1,5 +1,7 @@
 # GetKart
 
+Author - Rajesh Ranjan
+
 This is an e-commerce website created with React + Vite.
 
 This website implements almost all the concepts of React and other frameworks :
@@ -19,3 +21,5 @@ This website implements almost all the concepts of React and other frameworks :
 > State Lifting
 > Redux
 > Backend is yet to be implemented
+
+---
