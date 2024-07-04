@@ -1,24 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import SingleProductShimmer from "./SingleProductShimmer";
 import { ThemeStore } from "./utils/ThemeController";
 import ReviewComponent from "./ReviewComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "./utils/Store/CartSlice";
+import useSingleProductData from "./utils/useSingleProductData";
 
 const SingleProductPage = () => {
-  const [obj, setObj] = useState({
-    thumbnail:
-      "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg",
-    title: "Here goes title of the product...",
-    brand: "Here goes brand of the product...",
-    price: "Here goes price of the product...",
-    rating: "Here goes rating of the product...",
-    stock: "Here goes stock of the product...",
-    category: "Here goes category of the product...",
-    reviews: [],
-  });
-
   const [showIdx, setShowIdx] = useState(null);
 
   const { id } = useParams();
@@ -28,15 +17,7 @@ const SingleProductPage = () => {
   const darkTheme = "bg-base-200 w-screen h-[92vh]";
   const lightTheme = "bg-white w-screen h-[92vh]";
 
-  const getData = async () => {
-    const data = await fetch(`https://dummyjson.com/products/${id}`);
-    const proData = await data.json();
-    setObj(proData);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const obj = useSingleProductData(id);
 
   //   if (obj == null) {
   //     return <SingleProductShimmer />;

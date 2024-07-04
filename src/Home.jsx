@@ -26,7 +26,6 @@ const Home = () => {
 
   const checkInCart = (id) => {
     const objIdx = cartItems.findIndex((cartObj) => cartObj.objData.id == id);
-    console.log(objIdx);
     return objIdx;
   };
 
