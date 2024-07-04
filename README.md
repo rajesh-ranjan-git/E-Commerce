@@ -1,25 +1,27 @@
 # GetKart
 
-Author - Rajesh Ranjan
+<h3>Author</h3>
+<br>
+<h1>Rajesh Ranjan</h1>
 
 This is an e-commerce website created with React + Vite.
 
 This website implements almost all the concepts of React and other frameworks :
 
-> JSX
-> TailWind CSS
-> Hooks (useState, useEffect, useContext, useNavigate, useParam)
-> Shimmer UI
-> Multiple functionalities like Search Bar, Filtering Cards, Searching, Sorting
-> Context API
-> Dynamic Routing using React Routing
-> Link tags
-> Custom Hooks
-> Lazy Loading
-> Higher Order Components
-> Controlled and Uncontrolled components (Accordian)
-> State Lifting
-> Redux
-> Backend is yet to be implemented
+> JSX <br>
+> TailWind CSS <br>
+> Hooks (useState, useEffect, useContext, useNavigate, useParam) <br>
+> Shimmer UI <br>
+> Multiple functionalities like Search Bar, Filtering Cards, Searching, Sorting <br>
+> Context API <br>
+> Dynamic Routing using React Routing <br>
+> Link tags <br>
+> Custom Hooks <br>
+> Lazy Loading <br>
+> Higher Order Components <br>
+> Controlled and Uncontrolled components (Accordian) <br>
+> State Lifting <br>
+> Redux <br>
+> Backend is yet to be implemented <br>
 
 ---
