@@ -47,9 +47,6 @@ const ProductCard = ({ item }) => {
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <div>
-          {/* <div className="badge badge-primary h-8 font-bold text-lg p-5 mr-3">
-            {brand}
-          </div> */}
           {checkBrand()}
           <div className="badge badge-secondary h-8 font-bold text-lg p-5">
             {category}
