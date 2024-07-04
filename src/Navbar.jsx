@@ -8,7 +8,14 @@ const Navbar = () => {
   const [activeThemeButton, setActiveThemeButton] = useState(false);
 
   const cartItems = useSelector((store) => store.cart.items);
-  // console.log(cartItems);
+
+  const showNoOfCartItems = () => {
+    let cartItemsCounter = 0;
+    cartItems.map((cartObj) => {
+      cartItemsCounter += cartObj.quantity;
+    });
+    return cartItemsCounter;
+  };
 
   useEffect(() => {
     setActiveThemeButton(
@@ -32,7 +39,7 @@ const Navbar = () => {
             <Link to="/cart">
               Cart{" "}
               <sup className="text-red-600 text-xl font-bold">
-                {cartItems.length}
+                {showNoOfCartItems()}
               </sup>
             </Link>
           </li>
