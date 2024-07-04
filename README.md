@@ -1,8 +1,6 @@
 # GetKart
 
-<h3>Author</h3>
-<br>
-<h1>Rajesh Ranjan</h1>
+<h1>Rajesh Ranjan (Author)</h1>
 
 This is an e-commerce website created with React + Vite.
 
