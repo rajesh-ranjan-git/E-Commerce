@@ -26,6 +26,7 @@ const Home = () => {
 
   const checkInCart = (id) => {
     const objIdx = cartItems.findIndex((cartObj) => cartObj.objData.id == id);
+    console.log(objIdx);
     return objIdx;
   };
 
@@ -94,9 +95,13 @@ const Home = () => {
         </button>
       </div>
       <div className="cards flex justify-around items-center flex-wrap">
-        {productsData.map((item) => (
-          <ProductCard item={item} key={item.id} />
-        ))}
+        {productsData.map((item) => {
+          return checkInCart(item.id) != -1 ? (
+            <AddedComponent item={item} key={item.id}></AddedComponent>
+          ) : (
+            <ProductCard item={item} key={item.id}></ProductCard>
+          );
+        })}
       </div>
     </div>
   );
