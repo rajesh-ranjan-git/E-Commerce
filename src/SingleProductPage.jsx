@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import SingleProductShimmer from "./SingleProductShimmer";
 import { ThemeStore } from "./utils/ThemeController";
 import ReviewComponent from "./ReviewComponent";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "./utils/Store/CartSlice";
 
 const SingleProductPage = () => {
@@ -51,9 +51,21 @@ const SingleProductPage = () => {
     dispatch(addCart(obj));
   };
 
+  const cartItems = useSelector((store) => store.cart.items);
+
+  const checkInCart = () => {
+    const objIdx = cartItems.findIndex((cartObj) => cartObj.objData.id == id);
+    return objIdx;
+  };
+
   return (
     <div className={theme === "light" ? lightTheme : darkTheme}>
       <div className="card card-side shadow-xl w-1/2 mx-auto pt-6">
+        {checkInCart() != -1 ? (
+          <div className="bg-orange-500 rounded-2xl absolute p-2 text-black font-bold top-5 left-4">
+            Added to cart
+          </div>
+        ) : null}
         <figure>
           <img src={thumbnail} alt="Product" />
         </figure>
