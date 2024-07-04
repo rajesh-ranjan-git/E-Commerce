@@ -2,12 +2,15 @@ import ProductCard from "./ProductCard";
 import ShimmerUI from "./ShimmerUI";
 import { useState, useEffect, useContext } from "react";
 import { ThemeStore } from "./utils/ThemeController";
+import { useSelector } from "react-redux";
+import AddedProductInCart from "./utils/AddedProductInCart";
 
 const Home = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [query, setQuery] = useState("");
   const { theme } = useContext(ThemeStore);
+  const cartItems = useSelector((store) => store.cart.items);
 
   const darkTheme = "min-h-[92vh] p-2 bg-slate-400";
   const lightTheme = "min-h-[92vh] p-2 bg-white";
@@ -17,6 +20,13 @@ const Home = () => {
     const item = await data.json();
     setAllProducts(item.products);
     setProductsData(item.products);
+  };
+
+  const AddedComponent = AddedProductInCart(ProductCard);
+
+  const checkInCart = (id) => {
+    const objIdx = cartItems.findIndex((cartObj) => cartObj.objData.id == id);
+    return objIdx;
   };
 
   useEffect(() => {
