@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import SingleProductShimmer from "./SingleProductShimmer";
 import { ThemeStore } from "./utils/ThemeController";
 import ReviewComponent from "./ReviewComponent";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,17 +13,26 @@ const SingleProductPage = () => {
 
   const { theme } = useContext(ThemeStore);
 
-  const darkTheme = "bg-base-200 w-screen h-[92vh]";
-  const lightTheme = "bg-white w-screen h-[92vh]";
+  const darkTheme = "bg-base-200 w-screen h-[91vh]";
+  const lightTheme = "bg-white w-screen h-[91vh]";
 
   const obj = useSingleProductData(id);
 
-  //   if (obj == null) {
-  //     return <SingleProductShimmer />;
-  //   }
-
   const { thumbnail, title, brand, category, price, rating, stock, reviews } =
     obj;
+
+  const checkBrand = () => {
+    return brand ? (
+      <div>
+        <button className="btn cursor-default">
+          Brand
+          <div className="badge badge-primary h-8 font-bold text-lg p-5 mr-3">
+            {brand}
+          </div>
+        </button>
+      </div>
+    ) : null;
+  };
 
   const dispatch = useDispatch();
 
@@ -52,17 +60,9 @@ const SingleProductPage = () => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
+          {checkBrand()}
           <div>
-            <button className="btn">
-              Branch
-              <div className="badge badge-primary h-8 font-bold text-lg p-5 mr-3">
-                {brand}
-              </div>
-              {/* {checkBrand()} */}
-            </button>
-          </div>
-          <div>
-            <button className="btn">
+            <button className="btn cursor-default">
               Category
               <div className="badge badge-secondary h-8 font-bold text-lg p-5">
                 {category}
@@ -70,7 +70,7 @@ const SingleProductPage = () => {
             </button>
           </div>
           <div>
-            <button className="btn">
+            <button className="btn cursor-default">
               Price
               <div className="badge badge-secondary h-8 font-bold text-lg p-5">
                 {price}
@@ -78,7 +78,7 @@ const SingleProductPage = () => {
             </button>
           </div>
           <div>
-            <button className="btn">
+            <button className="btn cursor-default">
               Rating
               <div className="badge badge-secondary h-8 font-bold text-lg p-5">
                 {rating}
@@ -86,7 +86,7 @@ const SingleProductPage = () => {
             </button>
           </div>
           <div>
-            <button className="btn">
+            <button className="btn cursor-default">
               Stock
               <div className="badge badge-secondary h-8 font-bold text-lg p-5">
                 {stock}

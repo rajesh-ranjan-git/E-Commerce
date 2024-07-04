@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ReviewComponent = ({ obj, idx, showIdx, setShowIdx }) => {
   const { comment, reviewerName, rating } = obj;
@@ -12,15 +12,14 @@ const ReviewComponent = ({ obj, idx, showIdx, setShowIdx }) => {
         }}
       >
         <p>{reviewerName}</p>
+        {showIdx == idx ? <span>🔼</span> : <span>🔽</span>}
       </div>
       {showIdx == idx ? (
         <div className="comment h-14 bg-gray-400 rounded-2xl flex justify-between px-10 items-center text-2xl text-black">
           <p>{comment}</p>
           <p>{rating}</p>
         </div>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </div>
   );
 };
