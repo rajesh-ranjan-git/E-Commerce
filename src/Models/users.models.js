@@ -56,6 +56,6 @@ userSchema.methods.generateToken = () => {
   return token;
 };
 
-const User = model("User", userSchema);
+const Users = model("Users", userSchema);
 
-export default User;
+export default Users;
