@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThemeStore } from "./utils/ThemeController";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { usersAPI } from "./Constants";
 
 const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeStore);
@@ -25,6 +27,27 @@ const Navbar = () => {
 
   const darkTheme = "navbar bg-base-100 sticky z-10";
   const lightTheme = "navbar bg-gray-300 sticky z-10 text-black";
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      let response = await axios.post(
+        `${usersAPI}/logout`,
+        {},
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+
+      if (response.data.result === true) {
+        navigate("/login");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className={theme === "light" ? lightTheme : darkTheme}>
@@ -99,6 +122,14 @@ const Navbar = () => {
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
             </label>
+          </li>
+          <li>
+            <p
+              className="border-2 border-[rgb(48,52,60)] text-[1.25rem]"
+              onClick={handleLogout}
+            >
+              Logout
+            </p>
           </li>
         </ul>
       </div>
