@@ -4,7 +4,7 @@ import { usersAPI } from "./Constants";
 import { Navigate } from "react-router";
 import ShimmerUI from "./ShimmerUI";
 
-const AuthWrapper = () => {
+const AuthWrapper = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 

@@ -19,11 +19,16 @@ const Profile = lazy(() => import("./Profile.jsx"));
 const Error = lazy(() => import("./Error.jsx"));
 const SingleProductPage = lazy(() => import("./SingleProductPage.jsx"));
 const FoodApp = lazy(() => import("./FoodApp.jsx"));
+import AuthWrapper from "./AuthWrapper.jsx";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <AuthWrapper>
+        <App />
+      </AuthWrapper>
+    ),
     children: [
       {
         path: "/",
