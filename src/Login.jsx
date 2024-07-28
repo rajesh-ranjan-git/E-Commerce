@@ -16,7 +16,6 @@ const Login = () => {
     },
     validationSchema: loginSchema,
     onSubmit: async (values) => {
-      console.log(values);
       try {
         let response = await axios.post(`${usersAPI}/login`, values, {
           headers: { "Content-Type": "application/json" },
