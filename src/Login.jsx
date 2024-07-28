@@ -1,16 +1,38 @@
 import React, { useRef } from "react";
+import axios from "axios";
+import { usersAPI } from "./Constants";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
+  const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
+
     let email = emailRef.current.value;
     let password = passwordRef.current.value;
+
     emailRef.current.value = "";
     passwordRef.current.value = "";
-    console.log(email, password);
+
+    try {
+      let response = await axios.post(
+        `${usersAPI}/login`,
+        { email, password },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+
+      if (response.data.result === true) {
+        navigate("/");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
