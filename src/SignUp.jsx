@@ -3,51 +3,39 @@ import axios from "axios";
 import { usersAPI } from "./Constants";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { signupSchema } from "./utils/validationSchema";
+import { useFormik } from "formik";
 
 const SignUp = () => {
-  const userNameRef = useRef("");
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  const confirmPasswordRef = useRef("");
   const navigate = useNavigate();
 
-  const handleSignUp = async (event) => {
-    event.preventDefault();
-    let userName = userNameRef.current.value;
-    let email = emailRef.current.value;
-    let password = passwordRef.current.value;
-    let confirmPassword = confirmPasswordRef.current.value;
-
-    userNameRef.current.value = "";
-    emailRef.current.value = "";
-    passwordRef.current.value = "";
-    confirmPasswordRef.current.value = "";
-
-    try {
-      let response = await axios.post(
-        `${usersAPI}/signup`,
-        {
-          userName,
-          email,
-          password,
-          confirmPassword,
-        },
-        {
+  const formik = useFormik({
+    initialValues: {
+      userName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validationSchema: signupSchema,
+    onSubmit: async (values) => {
+      console.log(values);
+      try {
+        let response = await axios.post(`${usersAPI}/signup`, values, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
-        }
-      );
+        });
 
-      if (response.data.result === true) {
-        navigate("/");
+        if (response.data.result === true) {
+          navigate("/");
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    },
+  });
 
   return (
-    <form onSubmit={handleSignUp}>
+    <form onSubmit={formik.handleSubmit}>
       <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
         <div className="relative py-3 sm:max-w-xl sm:mx-auto">
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
@@ -66,7 +54,9 @@ const SignUp = () => {
                       id="userName"
                       name="userName"
                       type="text"
-                      ref={userNameRef}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.userName}
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 bg-transparent"
                       placeholder="Username"
                     />
@@ -76,6 +66,9 @@ const SignUp = () => {
                     >
                       Username
                     </label>
+                    {formik.errors.userName && formik.touched.userName && (
+                      <p className="text-red-600">{formik.errors.userName}</p>
+                    )}
                   </div>
                   <div className="relative">
                     <input
@@ -83,7 +76,9 @@ const SignUp = () => {
                       id="email"
                       name="email"
                       type="text"
-                      ref={emailRef}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.email}
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 bg-transparent"
                       placeholder="Email address"
                     />
@@ -93,6 +88,9 @@ const SignUp = () => {
                     >
                       Email Address
                     </label>
+                    {formik.errors.email && formik.touched.email && (
+                      <p className="text-red-600">{formik.errors.email}</p>
+                    )}
                   </div>
                   <div className="relative">
                     <input
@@ -100,7 +98,9 @@ const SignUp = () => {
                       id="password"
                       name="password"
                       type="password"
-                      ref={passwordRef}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.password}
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 bg-transparent"
                       placeholder="Password"
                     />
@@ -110,6 +110,9 @@ const SignUp = () => {
                     >
                       Password
                     </label>
+                    {formik.errors.password && formik.touched.password && (
+                      <p className="text-red-600">{formik.errors.password}</p>
+                    )}
                   </div>
                   <div className="relative">
                     <input
@@ -117,7 +120,9 @@ const SignUp = () => {
                       id="confirmPassword"
                       name="confirmPassword"
                       type="confirmPassword"
-                      ref={confirmPasswordRef}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.confirmPassword}
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 bg-transparent"
                       placeholder="confirmPassword"
                     />
@@ -127,6 +132,12 @@ const SignUp = () => {
                     >
                       Confirm Password
                     </label>
+                    {formik.errors.confirmPassword &&
+                      formik.touched.confirmPassword && (
+                        <p className="text-red-600">
+                          {formik.errors.confirmPassword}
+                        </p>
+                      )}
                   </div>
                   <div className="relative">
                     <button className="bg-cyan-500 text-white rounded-md px-2 py-1 w-96">

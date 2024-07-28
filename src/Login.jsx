@@ -7,47 +7,30 @@ import { useFormik } from "formik";
 import { loginSchema } from "./utils/validationSchema";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: loginSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log(values);
-    },
-  });
-
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  const navigate = useNavigate();
-
-  const handleLogin = async (event) => {
-    event.preventDefault();
-
-    let email = emailRef.current.value;
-    let password = passwordRef.current.value;
-
-    emailRef.current.value = "";
-    passwordRef.current.value = "";
-
-    try {
-      let response = await axios.post(
-        `${usersAPI}/login`,
-        { email, password },
-        {
+      try {
+        let response = await axios.post(`${usersAPI}/login`, values, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
-        }
-      );
+        });
 
-      if (response.data.result === true) {
-        navigate("/");
+        if (response.data.result === true) {
+          navigate("/");
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    },
+  });
 
   return (
     <form onSubmit={formik.handleSubmit}>
