@@ -95,7 +95,7 @@ const Navbar = () => {
                 value="synthwave"
                 className="toggle theme-controller"
                 checked={activeThemeButton}
-                onClick={(e) => {
+                onChange={(e) => {
                   setTheme(theme === "light" ? "dark" : "light");
                   localStorage.setItem(
                     "Theme",

@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import axios from "axios";
 import { usersAPI } from "./Constants";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const userNameRef = useRef("");
@@ -53,7 +54,9 @@ const SignUp = () => {
           <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
             <div className="w-96 mx-auto">
               <div>
-                <h1 className="text-2xl font-semibold">Create an Account</h1>
+                <h1 className="text-2xl font-semibold text-cyan-600">
+                  Create an Account
+                </h1>
               </div>
               <div className="divide-y divide-gray-200">
                 <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -201,6 +204,13 @@ const SignUp = () => {
                 <span>Signup with Google</span>
               </button>
             </div>
+
+            <p className="text-center text-black mt-4">
+              Already have an account?
+              <Link to="/login" className="text-cyan-600 font-semibold mx-2">
+                Sign In
+              </Link>
+            </p>
           </div>
         </div>
       </div>

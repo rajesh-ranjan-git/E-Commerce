@@ -2,8 +2,22 @@ import React, { useRef } from "react";
 import axios from "axios";
 import { usersAPI } from "./Constants";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import { loginSchema } from "./utils/validationSchema";
 
 const Login = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const navigate = useNavigate();
@@ -36,14 +50,14 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={formik.handleSubmit}>
       <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
         <div className="relative py-3 sm:max-w-xl sm:mx-auto">
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
           <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
             <div className="w-96 mx-auto">
               <div>
-                <h1 className="text-2xl font-semibold">Login</h1>
+                <h1 className="text-2xl font-semibold text-cyan-600">Login</h1>
               </div>
               <div className="divide-y divide-gray-200">
                 <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -53,7 +67,9 @@ const Login = () => {
                       id="email"
                       name="email"
                       type="text"
-                      ref={emailRef}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.email}
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 bg-transparent"
                       placeholder="Email address"
                     />
@@ -63,6 +79,9 @@ const Login = () => {
                     >
                       Email Address
                     </label>
+                    {formik.errors.email && formik.touched.email && (
+                      <p className="text-red-600">{formik.errors.email}</p>
+                    )}
                   </div>
                   <div className="relative">
                     <input
@@ -70,7 +89,9 @@ const Login = () => {
                       id="password"
                       name="password"
                       type="password"
-                      ref={passwordRef}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.password}
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 bg-transparent"
                       placeholder="Password"
                     />
@@ -80,9 +101,15 @@ const Login = () => {
                     >
                       Password
                     </label>
+                    {formik.errors.password && formik.touched.password && (
+                      <p className="text-red-600">{formik.errors.password}</p>
+                    )}
                   </div>
                   <div className="relative">
-                    <button className="bg-cyan-500 text-white rounded-md px-2 py-1 w-96">
+                    <button
+                      type="submit"
+                      className="bg-cyan-500 text-white rounded-md px-2 py-1 w-96"
+                    >
                       Login
                     </button>
                   </div>
@@ -157,6 +184,13 @@ const Login = () => {
                 <span>Continue with Google</span>
               </button>
             </div>
+
+            <p className="text-center text-black mt-4">
+              Don't have an account yet?
+              <Link to="/signup" className="text-cyan-600 font-semibold mx-2">
+                Sign Up
+              </Link>
+            </p>
           </div>
         </div>
       </div>
