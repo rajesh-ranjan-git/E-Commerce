@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { usersAPI } from "./Constants";
 import { useNavigate } from "react-router";
@@ -7,6 +7,7 @@ import { signupSchema } from "./utils/validationSchema";
 import { useFormik } from "formik";
 
 const SignUp = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -19,6 +20,7 @@ const SignUp = () => {
     validationSchema: signupSchema,
     onSubmit: async (values) => {
       try {
+        setIsLoading(true);
         let response = await axios.post(`${usersAPI}/signup`, values, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -29,6 +31,8 @@ const SignUp = () => {
         }
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     },
   });
@@ -140,7 +144,11 @@ const SignUp = () => {
                   </div>
                   <div className="relative">
                     <button className="bg-cyan-500 text-white rounded-md px-2 py-1 w-96">
-                      Signup
+                      {isLoading ? (
+                        <span className="loading loading-infinity loading-md"></span>
+                      ) : (
+                        "Signup"
+                      )}
                     </button>
                   </div>
                 </div>

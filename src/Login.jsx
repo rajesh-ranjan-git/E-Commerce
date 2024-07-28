@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { usersAPI } from "./Constants";
 import { useNavigate } from "react-router";
@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { loginSchema } from "./utils/validationSchema";
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -17,6 +18,7 @@ const Login = () => {
     validationSchema: loginSchema,
     onSubmit: async (values) => {
       try {
+        setIsLoading(true);
         let response = await axios.post(`${usersAPI}/login`, values, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -27,6 +29,8 @@ const Login = () => {
         }
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     },
   });
@@ -92,7 +96,11 @@ const Login = () => {
                       type="submit"
                       className="bg-cyan-500 text-white rounded-md px-2 py-1 w-96"
                     >
-                      Login
+                      {isLoading ? (
+                        <span className="loading loading-infinity loading-md"></span>
+                      ) : (
+                        "Login"
+                      )}
                     </button>
                   </div>
                 </div>
