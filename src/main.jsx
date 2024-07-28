@@ -7,6 +7,8 @@ import Home from "./Home.jsx";
 import ShimmerUI from "./ShimmerUI.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/Store/AppStore.js";
+import Login from "./Login.jsx";
+import SignUp from "./SignUp.jsx";
 // import Cart from "./Cart.jsx";
 // import Profile from "./Profile.jsx";
 // import Error from "./Error.jsx";
@@ -61,6 +63,14 @@ const appRouter = createBrowserRouter([
       },
     ],
     errorElement: <Error />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
   },
 ]);
 
