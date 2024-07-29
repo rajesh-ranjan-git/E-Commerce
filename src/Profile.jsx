@@ -36,7 +36,7 @@ const Profile = () => {
   return (
     <div className={theme === "light" ? lightTheme : darkTheme}>
       <div className="pt-8">
-        <div className="card lg:card-side bg-base-100 shadow-xl w-3/4 mx-auto">
+        <div className="card lg:card-side shadow-xl w-3/4 mx-auto">
           <figure>
             <img src={ProfilePic} alt="Profile Picture" className="h-[85vh]" />
           </figure>
