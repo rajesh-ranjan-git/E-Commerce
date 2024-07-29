@@ -2,11 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ThemeStore } from "./utils/ThemeController";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { removeUser } from "./utils/Store/UserSlice";
 import axios from "axios";
 import { usersAPI } from "./Constants";
 
 const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeStore);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [activeThemeButton, setActiveThemeButton] = useState(false);
 
   const cartItems = useSelector((store) => store.cart.items);
@@ -28,8 +32,6 @@ const Navbar = () => {
   const darkTheme = "navbar bg-base-100 sticky z-10";
   const lightTheme = "navbar bg-gray-300 sticky z-10 text-black";
 
-  const navigate = useNavigate();
-
   const handleLogout = async () => {
     try {
       let response = await axios.post(
@@ -43,6 +45,7 @@ const Navbar = () => {
 
       if (response.data.result === true) {
         navigate("/login");
+        dispatch(removeUser());
       }
     } catch (err) {
       console.log(err);
