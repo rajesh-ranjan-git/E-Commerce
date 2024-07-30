@@ -21,7 +21,7 @@ This website implements almost all the concepts of React and other frameworks :
 > State Lifting <br>
 > Redux <br>
 > Authentication and authorization implemented along with cookies to store tokens generated from JSONWebTokens (JWT) <br>
-> Implementation of validations using Formic and Yup <br>
+> Implementation of validations using Formik and Yup <br>
 > MongoDB used  for database <br>
 > Intial render takes about 30 secs due to backend deployment on Render.com <br>
 > Bcrypt for encryption and hashing of passwords <br>
