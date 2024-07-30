@@ -20,6 +20,13 @@ This website implements almost all the concepts of React and other frameworks :
 > Controlled and Uncontrolled components (Accordian) <br>
 > State Lifting <br>
 > Redux <br>
-> Backend is yet to be implemented <br>
+> Authentication and authorization implemented along with cookies to store tokens generated from JSONWebTokens (JWT) <br>
+> Implementation of validations using Formic and Yup <br>
+> MongoDB used  for database <br>
+> Intial render takes about 30 secs due to backend deployment on Render.com <br>
+> Bcrypt for encryption and hashing of passwords <br>
+> Axios for API calls <br>
+> Usage of DaisyUI, Remix-icons, DummyJSON, Tailwind-Flex <br>
+> Deployed at https://get-kart.netlify.app <br>
 
 ---
